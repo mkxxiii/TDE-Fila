@@ -13,11 +13,11 @@ namespace TDE
 			Fim = null;
 		}
 
-		public string Desenfilerar()
+		public No<string> Desenfilerar()
 		{
 			if (EstaVazia()) throw new Exception("Underflow");
 
-			var valorRetorno = Inicio.Valor;
+			var valorRetorno = Inicio;
 			
 			Inicio = Inicio.ProximoNo;
 			Tamanho--;

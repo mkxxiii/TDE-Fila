@@ -6,10 +6,21 @@ namespace TDE
         static FilaDinamica filaPrefencial;
         static FilaDinamica filaComum; 
 
+        static int proximaSenhaPrefencial;
+        static int proximaSenhaComum;
+        static No<string> SenhaAtualPreferencial;
+        static No<string> SenhaAtualComum;
+
+
+
         static void Main(string[] args)
         {
             filaPrefencial = new FilaDinamica();
             filaComum = new FilaDinamica();
+            proximaSenhaComum = 1;
+            proximaSenhaPrefencial = 1;
+            SenhaAtualPreferencial = null;
+            SenhaAtualComum = null;
             Menu();
         }
 
@@ -80,35 +91,60 @@ namespace TDE
         }
 
         static void GerarSenhaPreferencial(){
-            Console.WriteLine("Senha P gerada");
+            string senhaGerada = $"CXP_{proximaSenhaPrefencial}";
+            filaPrefencial.Enfilerar(senhaGerada);
+            proximaSenhaPrefencial++;
+            Console.WriteLine($"Sua senha é: {senhaGerada}");
         }
 
         static void GerarSenhaComum(){
-            Console.WriteLine("Senha C gerada");
+            string senhaGerada = $"CXN_{proximaSenhaComum}";
+            filaComum.Enfilerar(senhaGerada);
+            proximaSenhaComum++;
+            Console.WriteLine($"Sua senha é: {senhaGerada}");
         }
 
         static void ConsultarSenhas(){
-            Console.WriteLine("Senha Consultada");
+            Console.Clear();
+            Console.WriteLine("**********************************");
+            Console.WriteLine("FILA PREFERENCIAL: ");
+            Console.WriteLine($"Senha Atual {SenhaAtualPreferencial?.Valor} - Proxima Senha {filaPrefencial.Inicio?.Valor}");
+            Console.WriteLine("FILA COMUM: ");
+            Console.WriteLine($"Senha Atual {SenhaAtualComum?.Valor} - Proxima Senha {filaComum?.Inicio?.Valor}");
+            Console.WriteLine("**********************************");
         }
 
         static void ChamarSenhaPreferencial(){
-            Console.WriteLine("Senha P chamada");
+            if(filaPrefencial.EstaVazia()){
+                SenhaAtualPreferencial = null;
+                Console.Clear();
+                Console.WriteLine("Fila está vazia");
+                return;
+            }
+
+            SenhaAtualPreferencial = filaPrefencial.Desenfilerar();
+            Console.Clear();
+            Console.WriteLine("**********************************");
+            Console.WriteLine($"SENHA PREFENCIAL CHAMADA: {SenhaAtualPreferencial.Valor}");
+            Console.WriteLine("**********************************");
         }
 
         static void ChamarSenhaComum(){
-            Console.WriteLine("Senha C chamada");
+            if(filaComum.EstaVazia()){
+                SenhaAtualComum = null;
+                Console.Clear();
+                Console.WriteLine("Fila está vazia");
+                return;
+            }
+            
+            SenhaAtualComum = filaComum.Desenfilerar();
+            Console.Clear();
+            Console.WriteLine("**********************************");
+            Console.WriteLine($"SENHA PREFENCIAL CHAMADA: {SenhaAtualComum.Valor}");
+            Console.WriteLine("**********************************");
         }
 
     }
 
 }
-
-
-/*
-Regras:
-1 - Caso você clique no botão e a fila esteja vazia a mensagem de fila vazia deve ser exibida.
-2 - Nome Senha Prefencial (CXP-001)
-3 - Nome Senha Comum (CXN-001)
-4 - Na consulta de Senhas deve ser exibido a atual e a proxima de cada fila
-*/
 

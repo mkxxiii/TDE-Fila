@@ -4,6 +4,6 @@ namespace TDE
 	{
 		public void Enfilerar(T item);
 
-		public T Desenfilerar();
+		public No<T> Desenfilerar();
 	}
 }
