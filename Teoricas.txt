@@ -1,0 +1,15 @@
+A) - FIFO = First In - First Out
+A Fila é considerada um FIFO porque o primeiro elemento a entrar nela, será o primeiro elemento a sair
+
+B) O(1) -> Sempre sabemos quem é o último elemento da Fila. Logo basta que o novo elemento aponte para o último elemento da fila.
+
+C) O(1) -> Sempre sabemos quem é o primeiro elemento da Fila. Logo basta removê-lo e fazer o segundo elemento apontar para nada.
+
+D) O(N) -> É necessário interar em todos os elementos da Fila.
+
+E) O(1) -> Sempre sabemos quem é o primeiro item da Fila.
+
+F) Não. Embora podemos implementar uma fila com um vetor, um vetor pode ter seus itens modificados em qualquer ordem acessando em qualquer posicao.
+Portanto, um vetor puro, sem uma implementacao por cima, furaria o conceito da Fila de First In, First Out.
+
+
