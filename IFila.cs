@@ -1,4 +1,4 @@
-namespace FilaPoc
+namespace TDE
 {
 	public interface IFila<T>
 	{
